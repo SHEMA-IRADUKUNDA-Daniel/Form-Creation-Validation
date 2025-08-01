@@ -1,13 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("registration-form");
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+  const feedBackDiv = document.getElementById("form-feedback");
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
 
     const name = document.getElementById("username").value.trim();
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
-    const feedBack = document.getElementById("form-feedback");
 
     let isValid = true;
     const messages = [];
@@ -27,14 +26,14 @@ document.addEventListener("DOMContentLoaded", () => {
       messages.push("Password must be at least 8 characters long.");
     }
 
-    feedBack.style.display = "block";
+    feedBackDiv.style.display = "block";
 
     if (isValid) {
-      feedBack.textContent = "Registration successful!";
+      feedBackDiv.textContent = "Registration successful!";
       feedBack.style.color = "#28a745";
     } else {
-      feedBack.innerHTML = messages.join("<br>");
-      feedBack.style.color = "#dc3545";
+      feedBackDiv.innerHTML = messages.join("<br>");
+      feedBackDiv.style.color = "#dc3545";
     }
   });
 });
